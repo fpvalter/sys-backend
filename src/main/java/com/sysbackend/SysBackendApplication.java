@@ -17,6 +17,7 @@ import com.sysbackend.domain.Pagamento;
 import com.sysbackend.domain.PagamentoBoleto;
 import com.sysbackend.domain.PagamentoCartao;
 import com.sysbackend.domain.Pedido;
+import com.sysbackend.domain.PedidoItem;
 import com.sysbackend.domain.Produto;
 import com.sysbackend.domain.enums.EstadoPagamento;
 import com.sysbackend.domain.enums.TipoCliente;
@@ -26,6 +27,7 @@ import com.sysbackend.repositories.ClienteRepository;
 import com.sysbackend.repositories.EnderecoRepository;
 import com.sysbackend.repositories.EstadoRepository;
 import com.sysbackend.repositories.PagamentoRepository;
+import com.sysbackend.repositories.PedidoItemRepository;
 import com.sysbackend.repositories.PedidoRepository;
 import com.sysbackend.repositories.ProdutoRepository;
 
@@ -55,6 +57,9 @@ public class SysBackendApplication implements CommandLineRunner{
 	
 	@Autowired
 	private PagamentoRepository pagamentoRepository;
+	
+	@Autowired
+	private PedidoItemRepository pedidoItemRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SysBackendApplication.class, args);
@@ -121,7 +126,18 @@ public class SysBackendApplication implements CommandLineRunner{
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pag1, pag2));
 		
+		PedidoItem pi1 = new PedidoItem(ped1, prod1, 0.00, 1.00, 2000.00);
+		PedidoItem pi2 = new PedidoItem(ped1, prod3, 0.00, 2.00, 80.00);
+		PedidoItem pi3 = new PedidoItem(ped2, prod2, 100.00, 1.00, 800.00);
 		
+		ped1.getItens().addAll(Arrays.asList(pi1, pi2));
+		ped2.getItens().addAll(Arrays.asList(pi3));
+		
+		prod1.getItens().addAll(Arrays.asList(pi1));
+		prod2.getItens().addAll(Arrays.asList(pi3));
+		prod3.getItens().addAll(Arrays.asList(pi2));		
+		
+		pedidoItemRepository.saveAll(Arrays.asList(pi1, pi2, pi3));
 	}
 
 }
