@@ -85,7 +85,7 @@ public class SysBackendApplication implements CommandLineRunner{
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
 		produtoRepository.saveAll(Arrays.asList(prod1, prod2, prod3));
 		
-		
+		///////////////////////////////////////////////////////////////////////////////////////////////
 		
 		Estado est1 = new Estado(null, "Minas Gerais");
 		Estado est2 = new Estado(null, "São Paulo");
@@ -100,6 +100,7 @@ public class SysBackendApplication implements CommandLineRunner{
 		estadoRepository.saveAll(Arrays.asList(est1, est2));
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3));
 		
+		///////////////////////////////////////////////////////////////////////////////////////////////
 		
 		Cliente cli1 = new Cliente(null, "Maria Silva", "maria@gmail.com", "1234567890", TipoCliente.PESSOAFISICA);
 		cli1.getTelefonesSet().addAll(Arrays.asList("123456", "321564"));
@@ -110,6 +111,7 @@ public class SysBackendApplication implements CommandLineRunner{
 		clienteRepository.saveAll(Arrays.asList(cli1));
 		enderecoRepository.saveAll(Arrays.asList(end1, end2));
 		
+		///////////////////////////////////////////////////////////////////////////////////////////////
 		
 		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		Pedido ped1 = new Pedido(null, df.parse("30/12/2017 10:32"), cli1, end1);
@@ -125,6 +127,8 @@ public class SysBackendApplication implements CommandLineRunner{
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		pagamentoRepository.saveAll(Arrays.asList(pag1, pag2));
+		
+		///////////////////////////////////////////////////////////////////////////////////////////////
 		
 		PedidoItem pi1 = new PedidoItem(ped1, prod1, 0.00, 1.00, 2000.00);
 		PedidoItem pi2 = new PedidoItem(ped1, prod3, 0.00, 2.00, 80.00);
