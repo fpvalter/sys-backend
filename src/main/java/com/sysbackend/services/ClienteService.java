@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sysbackend.domain.Cliente;
 import com.sysbackend.repositories.ClienteRepository;
+import com.sysbackend.services.exception.ObjectNotFoundException;
 
 @Service
 public class ClienteService {

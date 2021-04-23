@@ -1,4 +1,4 @@
-package com.sysbackend.services;
+package com.sysbackend.services.exception;
 
 public class ObjectNotFoundException extends RuntimeException{
 	

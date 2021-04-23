@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sysbackend.domain.Pedido;
 import com.sysbackend.repositories.PedidoRepository;
+import com.sysbackend.services.exception.ObjectNotFoundException;
 
 @Service
 public class PedidoService {
